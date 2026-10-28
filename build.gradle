@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.atm'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // MySQL JDBC Driver
+    implementation 'com.mysql:mysql-connector-j:9.1.0'
+
+    // FlatLaf - Modern Flat Look and Feel for Swing
+    implementation 'com.formdev:flatlaf:3.5.4'
+
+    // BCrypt for PIN hashing
+    implementation 'at.favre.lib:bcrypt:0.10.2'
+
+    // JUnit 5 for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+application {
+    mainClass = 'com.atm.ATMApplication'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.atm.ATMApplication',
+            'Implementation-Title': 'ATM Transaction System',
+            'Implementation-Version': version
+        )
+    }
+    // Create fat jar with all dependencies
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

@@ -1,0 +1,49 @@
+# Build output
+build/
+out/
+bin/
+*.class
+
+# Gradle
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credentials and secrets
+config.properties
+*.env
+.env
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.out
+*.bbl
+*.blg
+
+# Template extraction
+template_extracted/
+
+# Temporary work directory
+.work/
+
+# Reference files (not part of deliverables)
+*.zip
+Fitness_Center_DBMS_Report_edited.pdf
+
